@@ -1,0 +1,41 @@
+
+body {
+	text-align: center;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.todo-item {
+	background-color: beige;
+	width: 15rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.todo-checkbox {
+	display : inline-flex;
+	margin-right: 1rem;
+}
+
+.todo-title {
+	display : inline-flex;
+	width: 9rem;
+	margin-right: 1rem;
+}
+
+.remove-item {
+	display : inline-flex;
+}
+
+.todo-input {
+	width: 25%;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}

@@ -1,0 +1,41 @@
+<!-- <ul class="todos">
+	<li *ngFor="let todo of todos"
+		[class.selected]="todo == selectedTodo"
+		(click)="onSelect(todo)">
+		<span class="badge">{{ todo.id }}</span> {{todo.title}}
+	</li>
+</ul> -->
+
+<div class="todos" *ngFor="let todo of todos">
+	
+	<div class="todo-item">
+		<input type="checkbox" [(ngModel)]="todo.completed" class="todo-checkbox"/>
+		<div class="todo-title">
+			<div *ngIf="!todo.editing; else editingTodo" class="todo-item" [ngClass]="{ 'completed': todo.completed }" 
+				(dblclick)="editTodo(todo)">
+				{{ todo.title }}
+			</div>
+			<ng-template #editingTodo>
+				<input type="text" class="todo-item-edit" [(ngModel)]="todo.title" 
+				(blur)="doneEdit(todo)" (keyup.enter)="doneEdit(todo)" (keyup.esc)="cancelEdit(todo)" autofocus/>
+			</ng-template>
+		</div>
+		<div class="remove-item" (click)="deleteTodo(todo.id)">
+			&times;
+		</div>
+		<div>
+			<mat-radio-group aria-label="Select an option" [(ngModel)]="todo.priority">
+				<mat-radio-button value="high">high</mat-radio-button>
+				<mat-radio-button value="middle">middle</mat-radio-button>
+				<mat-radio-button value="low">low</mat-radio-button>
+			</mat-radio-group>
+		</div>
+	</div>
+</div>
+
+<input type="text" class="todo-input" placeholder="add new todo" 
+	[(ngModel)]="todoTitle" (keyup.enter)="addTodo()"/>
+
+<div class="remaining">
+	<div>{{ remaining() }} items left</div>
+</div>
