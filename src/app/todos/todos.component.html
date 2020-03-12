@@ -1,11 +1,3 @@
-<!-- <ul class="todos">
-	<li *ngFor="let todo of todos"
-		[class.selected]="todo == selectedTodo"
-		(click)="onSelect(todo)">
-		<span class="badge">{{ todo.id }}</span> {{todo.title}}
-	</li>
-</ul> -->
-
 <div class="todos" *ngFor="let todo of todos; let i = index">
 	
 	<div class="todo-item alert alert-primary row" [ngClass]="{ 'alert-danger': i == gitBitsDunNumber}">

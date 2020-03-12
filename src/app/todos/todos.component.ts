@@ -18,15 +18,9 @@ import { TodoService } from '../services/todo.service';
   ],
 })
 export class TodosComponent implements OnInit {
-  //todos = TODOS;
-  //todos: Todo[];
-  selectedTodo: Todo;
   todoTitle: string;
-  todoID: number;
   titleCache: string;
   gitBitsDunNumber: number;
-
-  folded = 'closed';
 
   public todos = [];
 
@@ -34,14 +28,10 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.gitBitsDunNumber = -1;
-    this.todoID = 4;
     this.todoTitle = '';
 
-    //this.todos = [];
     this.todoService.getTodos()
       .subscribe(data => this.todos = data);
-    console.log(this.todos);
-    console.log('------------------');
   }
 
   addTodo(): void {
@@ -58,15 +48,9 @@ export class TodosComponent implements OnInit {
     this.todos.push(post);
 
     this.todoService.postTodo(post)
-      .subscribe(data => {alert("Succesfully Added Product details")});
+      .subscribe(data => {alert("Succesfully Added New Todo Items")});
     
     this.todoTitle = '';
-    this.todoID++;
-  }
-
-
-  onSelect(todo: Todo): void {
-    this.selectedTodo = todo;
   }
 
   deleteTodo(id: number): void {
@@ -92,10 +76,6 @@ export class TodosComponent implements OnInit {
 
   remaining(): number {
     return this.todos.filter(todo => todo.completed == false).length;
-  }
-
-  toggleFold(){
-    this.folded = this.folded === 'open' ? 'closed' : 'open';
   }
 
   random(): void {
