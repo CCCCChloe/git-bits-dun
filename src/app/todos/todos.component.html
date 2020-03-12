@@ -6,9 +6,9 @@
 	</li>
 </ul> -->
 
-<div class="todos" *ngFor="let todo of todos">
+<div class="todos" *ngFor="let todo of todos; let i = index">
 	
-	<div class="todo-item">
+	<div class="todo-item" [ngClass]="{ 'gitBitsDun': i == gitBitsDunNumber}">
 		<input type="checkbox" [(ngModel)]="todo.completed" class="todo-checkbox"/>
 		<div class="todo-title">
 			<div *ngIf="!todo.editing; else editingTodo" class="todo-item" [ngClass]="{ 'completed': todo.completed }" 
@@ -42,3 +42,4 @@
 
 <button *ngIf="remaining()>=5" (click)="random()">random</button>
 <button (click)="sort()">order by priority</button>
+<button *ngIf="remaining()>=5" (click)="gitBitsDun()">Git Bits Dun!</button>

@@ -9,6 +9,7 @@ import { TodosComponent } from './todos/todos.component';
 import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { CountdownModule } from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatRadioModule,
     HttpClientModule,
+    CountdownModule,
   ], 
   providers: [],
   bootstrap: [AppComponent]

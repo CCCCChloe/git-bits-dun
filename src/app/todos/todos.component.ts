@@ -24,6 +24,7 @@ export class TodosComponent implements OnInit {
   todoTitle: string;
   todoID: number;
   titleCache: string;
+  gitBitsDunNumber: number;
 
   folded = 'closed';
 
@@ -32,6 +33,7 @@ export class TodosComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
+    this.gitBitsDunNumber = -1;
     this.todoID = 4;
     this.todoTitle = '';
     this.todos = [
@@ -143,5 +145,9 @@ export class TodosComponent implements OnInit {
       }
     }
     this.todos = todosCopy;
+  }
+
+  gitBitsDun(): number {
+    return this.gitBitsDunNumber = Math.floor(Math.random() * Math.floor(this.todos.length));
   }
 }
