@@ -17,6 +17,6 @@ export class TodoService {
   }
 
   postTodo(post): Observable<Todo[]> {
-    return this.http.post<Todo[]>('http://localhost:3000/post', JSON.stringify(post));
+    return this.http.post<Todo[]>('http://localhost:3000/post', post);
   }
 }

@@ -15,7 +15,7 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //var connectionString = 'mongodb://ibm_cloud_668496a7_b117_4248_a990_40c08e59cbc7:e3d10b99630d03facb68da2251e41ee1b6d12542efdb7d048f0a079bc7953bb4@a8b8f1b0-76d7-4e00-ba74-a07d6a9ba9fc-0.bn2a2uid0up8mv7mv2ig.databases.appdomain.cloud:31451,a8b8f1b0-76d7-4e00-ba74-a07d6a9ba9fc-1.bn2a2uid0up8mv7mv2ig.databases.appdomain.cloud:31451/ibmclouddb?authSource=admin&replicaSet=replset';
@@ -42,11 +42,11 @@ MongoClient.connect(connectionString, function (err, client) {
 		});
 
 		// post method
-		app.post('/post', urlencodedParser, function(req, res) {
-			res.send('<h1>post data!!');
+		app.post('/post', jsonParser, function(req, res) {
+			//res.send('<h1>post data!!');
 			//res.send(req.body.title);
-			res.send(req.headers["content-type"]);
-			console.log(req.headers["content-type"]);
+			//res.send(req.headers["content-type"]);
+			console.log(req);
 			const newTodo = {
 				title: req.body.title,
 				completed: req.body.completed,
