@@ -52,3 +52,8 @@ body {
 .btn {
 	margin-right: 1rem;
 }
+
+.remaining {
+	margin-left: 1rem;
+	color: darkgray;
+}

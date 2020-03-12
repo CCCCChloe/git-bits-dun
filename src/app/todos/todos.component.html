@@ -34,16 +34,14 @@
 	</div>
 </div>
 
+<div class="remaining">
+	<div>{{ remaining() }} todo items left</div>
+</div>
+
 <div class="input-group input-group-lg">
 	<input type="text" class="todo-input form-control" ria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="add new todo" 
 	[(ngModel)]="todoTitle" (keyup.enter)="addTodo()"/>
   <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"> -->
-</div>
-
-
-
-<div class="remaining">
-	<div>{{ remaining() }} items left</div>
 </div>
 
 <button class="btn btn-primary" *ngIf="remaining()>=5" (click)="random()">random</button>

@@ -1,6 +1,11 @@
 <div class="container">
 	<h1>{{title}}</h1>
 	<app-todos></app-todos>
-	<countdown [config]="{leftTime: 30, demand: true}"></countdown>
+	<countdown #cd1 [config]="{leftTime: 1800, demand: true}"></countdown>
+	<button (click)="cd1.begin()" class="btn btn-link btn-sm">start</button>
+	<button (click)="cd1.pause()" class="btn btn-link btn-sm">pause</button>
+	<button (click)="cd1.resume()" class="btn btn-link btn-sm">resume</button>
+	<button (click)="cd1.stop()" class="btn btn-link btn-sm">stop</button>
+	<button (click)="cd1.restart()" class="btn btn-link btn-sm">restart</button>
 </div>
 
