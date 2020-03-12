@@ -19,13 +19,15 @@ import { TodoService } from '../services/todo.service';
 })
 export class TodosComponent implements OnInit {
   //todos = TODOS;
-  todos: Todo[];
+  //todos: Todo[];
   selectedTodo: Todo;
   todoTitle: string;
   todoID: number;
   titleCache: string;
 
   folded = 'closed';
+
+  public todos = [];
 
   constructor(private todoService: TodoService) { }
 
@@ -56,8 +58,11 @@ export class TodosComponent implements OnInit {
       },
     ];
 
-    this.todos = [];
-    this.todos = this.todoService.getTodos();
+    //this.todos = [];
+    this.todoService.getTodos()
+      .subscribe(data => this.todos = data);
+    console.log(this.todos);
+    console.log('------------------');
   }
 
   addTodo(): void {
