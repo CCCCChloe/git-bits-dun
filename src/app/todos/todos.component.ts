@@ -69,18 +69,22 @@ export class TodosComponent implements OnInit {
     if (this.todoTitle.trim().length == 0) {
       return;
     }
-    this.todos.push(
-      {
-        'id': this.todoID,
-        'title': this.todoTitle,
-        'completed': false,
-        'priority': '',
-        'editing': false,
-      }
-    )
+    let post = {
+      'title': this.todoTitle,
+      'completed': false,
+      'priority': '',
+      'editing': false,
+    };
+
+    this.todos.push(post);
+
+    this.todoService.postTodo(post)
+      .subscribe(data => {alert("Succesfully Added Product details")});
+    
     this.todoTitle = '';
     this.todoID++;
   }
+
 
   onSelect(todo: Todo): void {
     this.selectedTodo = todo;
@@ -113,5 +117,31 @@ export class TodosComponent implements OnInit {
 
   toggleFold(){
     this.folded = this.folded === 'open' ? 'closed' : 'open';
+  }
+
+  random(): void {
+    var currentIndex = this.todos.length;
+    while (0 !== currentIndex) {
+      var randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      var temporaryValue = this.todos[currentIndex];
+      this.todos[currentIndex] = this.todos[randomIndex];
+      this.todos[randomIndex] = temporaryValue;
+    }
+  }
+
+  sort(): void {
+    var theOrder = ['high', 'middle', 'low', ''];
+    var todosCopy = [];
+    var index = 0;
+    for (var j=0; j<theOrder.length; j++) {
+      for (var i=0; i<this.todos.length; i++) {
+        if (this.todos[i].priority == theOrder[j]) {
+          todosCopy[index] = this.todos[i];
+          index++;
+        }
+      }
+    }
+    this.todos = todosCopy;
   }
 }

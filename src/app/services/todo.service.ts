@@ -15,4 +15,8 @@ export class TodoService {
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.dataUrl);
   }
+
+  postTodo(post): Observable<Todo[]> {
+    return this.http.post<Todo[]>('http://localhost:3000/post', JSON.stringify(post));
+  }
 }

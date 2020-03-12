@@ -39,3 +39,6 @@
 <div class="remaining">
 	<div>{{ remaining() }} items left</div>
 </div>
+
+<button *ngIf="remaining()>=5" (click)="random()">random</button>
+<button (click)="sort()">order by priority</button>
