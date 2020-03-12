@@ -36,29 +36,6 @@ export class TodosComponent implements OnInit {
     this.gitBitsDunNumber = -1;
     this.todoID = 4;
     this.todoTitle = '';
-    this.todos = [
-      {
-        'id': 1,
-        'title': 'task #1',
-        'completed': false,
-        'priority': '',
-        'editing': false,
-      },
-      {
-        'id': 2,
-        'title': 'task #2',
-        'completed': false,
-        'priority': '',
-        'editing': false,
-      },
-      {
-        'id': 3,
-        'title': 'task #3',
-        'completed': false,
-        'priority': '',
-        'editing': false,
-      },
-    ];
 
     //this.todos = [];
     this.todoService.getTodos()

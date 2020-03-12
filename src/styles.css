@@ -3,4 +3,8 @@ body {
     background-color: white;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin-top: 2rem; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    margin-left: 5rem;
+}

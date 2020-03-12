@@ -8,22 +8,23 @@
 
 <div class="todos" *ngFor="let todo of todos; let i = index">
 	
-	<div class="todo-item" [ngClass]="{ 'gitBitsDun': i == gitBitsDunNumber}">
+	<div class="todo-item alert alert-primary row" [ngClass]="{ 'alert-danger': i == gitBitsDunNumber}">
 		<input type="checkbox" [(ngModel)]="todo.completed" class="todo-checkbox"/>
-		<div class="todo-title">
+		<div class="todo-title column-sm">
 			<div *ngIf="!todo.editing; else editingTodo" class="todo-item" [ngClass]="{ 'completed': todo.completed }" 
 				(dblclick)="editTodo(todo)">
 				{{ todo.title }}
 			</div>
+			
 			<ng-template #editingTodo>
 				<input type="text" class="todo-item-edit" [(ngModel)]="todo.title" 
 				(blur)="doneEdit(todo)" (keyup.enter)="doneEdit(todo)" (keyup.esc)="cancelEdit(todo)" autofocus/>
 			</ng-template>
 		</div>
-		<div class="remove-item" (click)="deleteTodo(todo.id)">
+		<!-- <div class="remove-item" (click)="deleteTodo(todo.id)">
 			&times;
-		</div>
-		<div>
+		</div> -->
+		<div class="column-sm">
 			<mat-radio-group aria-label="Select an option" [(ngModel)]="todo.priority">
 				<mat-radio-button value="high">high</mat-radio-button>
 				<mat-radio-button value="middle">middle</mat-radio-button>
@@ -33,13 +34,18 @@
 	</div>
 </div>
 
-<input type="text" class="todo-input" placeholder="add new todo" 
+<div class="input-group input-group-lg">
+	<input type="text" class="todo-input form-control" ria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" placeholder="add new todo" 
 	[(ngModel)]="todoTitle" (keyup.enter)="addTodo()"/>
+  <!-- <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"> -->
+</div>
+
+
 
 <div class="remaining">
 	<div>{{ remaining() }} items left</div>
 </div>
 
-<button *ngIf="remaining()>=5" (click)="random()">random</button>
-<button (click)="sort()">order by priority</button>
-<button *ngIf="remaining()>=5" (click)="gitBitsDun()">Git Bits Dun!</button>
+<button class="btn btn-primary" *ngIf="remaining()>=5" (click)="random()">random</button>
+<button class="btn btn-success" (click)="sort()">order by priority</button>
+<button class="btn btn-danger" *ngIf="remaining()>=5" (click)="gitBitsDun()">Git Bits Dun!</button>
