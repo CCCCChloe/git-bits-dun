@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todos';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -26,7 +27,7 @@ export class TodosComponent implements OnInit {
 
   folded = 'closed';
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
     this.todoID = 4;
@@ -53,7 +54,10 @@ export class TodosComponent implements OnInit {
         'priority': '',
         'editing': false,
       },
-    ]
+    ];
+
+    this.todos = [];
+    this.todos = this.todoService.getTodos();
   }
 
   addTodo(): void {
